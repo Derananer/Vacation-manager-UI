@@ -2,6 +2,7 @@ import {Employee} from '../employees/employee';
 
 export class Group {
 	id:string;
-	ruleId:string;
+	ruleName:string;
+	groupName:string;
 	employees:Employee[];
 }

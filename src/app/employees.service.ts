@@ -13,6 +13,13 @@ export class EmployeesService {
   	//here we http request
   	return ;
   }
+  addEmpoloyee():Observable<Employee>{
+
+  	return;
+  }
+  deletEmployee():Observable<>{
+
+  }
 
   constructor() { }
 }

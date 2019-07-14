@@ -7,10 +7,13 @@ import { Observable, of } from 'rxjs';
 })
 export class GroupsService {
   
-  //here we have to create http request for emplIDs then embed empls to group
-  getGroups():Observable<>{
-  	return
+  
+  getGroups():Observable<Group[]>{
+    //here we have to create http request for emplIDs then embed empls to group	
+  	
+  	return ;
   }
+
 
   constructor() { }
 }
