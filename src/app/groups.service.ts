@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Group } from './groups/group';
 import { Observable, of } from 'rxjs';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,5 @@ export class GroupsService {
   }
 
 
-  constructor() { }
+  constructor(private tokenService: TokenService) { }
 }

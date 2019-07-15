@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Employee } from './employees/employee';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,26 +15,26 @@ export class EmployeesService {
   employeeServiceURL = "http://localhost:8079/services/employee-service/";
   employeesURL = "employees";
   employeeURL = "employee";
-  addEmployeeURL = "add-employeeURL";
+  addEmployeeURL = "add-employee";
+  removeEmployeeURL = "";
 
-  standratHeaders = new HttpHeaders({
+  standardHeaders = new HttpHeaders({
     'department': this.department, 
     'Content-Type':  'application/json',
-    'Authorization': 'my-auth-token'
+    'Authorization': this.tokenService.getToken()
   });
 
   getEmployees():Observable<Employee[]>{
-    this.http.get<Employee[]>(this.employeeServiceURL + this.employeesURL, {"headers": this.standratHeaders});
-  	return ;
+    return this.http.get<Employee[]>(this.employeeServiceURL + this.employeesURL, {"headers": this.standardHeaders});
   }
-  addEmpoloyee():Observable<Employee>{
 
-  	return;
+  addEmpoloyee(employee: Employee):Observable<Employee>{
+  	return this.http.post<Employee>(this.employeeServiceURL + this.removeEmployeeURL, employee, {"headers" : this.standardHeaders});
   }
 
   /*deleteEmployee():Observable<>{
 
   }*/
 
- constructor(private http: HttpClient) { }
+ constructor(private http: HttpClient, private tokenService: TokenService) { }
 }

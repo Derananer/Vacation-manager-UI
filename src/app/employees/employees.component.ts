@@ -3,6 +3,7 @@ import { Employee } from './employee';
 import { EmployeesService} from '../employees.service';
 
 
+
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
@@ -14,6 +15,12 @@ export class EmployeesComponent implements OnInit {
   
   getEmployees():void{
   	this.employeeService.getEmployees().subscribe(employees => this.employees = employees);
+  }
+
+  addEmployee(employee:Employee):void{
+    this.employeeService.addEmpoloyee(employee).subscribe(employee => this.employees.push(employee));
+  }
+  removeEmployee():void{
   }
 
   constructor(private employeeService: EmployeesService) { }
