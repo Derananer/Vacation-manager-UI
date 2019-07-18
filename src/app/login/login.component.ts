@@ -12,8 +12,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService) { }
 
-  singIn(userCredentials):void{
+  singIn(userCredentials: UserCredentials):void{
   	//here http request
+  	this.loginService
   }
 
   ngOnInit() {

@@ -1,1 +1,11 @@
 <p>sing-up works!</p>
+<div>
+    <p align='center'><label>Имя<input type="text" [(ngModel)] = "userCreation.firstName"></label></p>
+    <p align='center'><label>Фамилия<input type="text" [(ngModel)] = "userCreation.lastName"></label></p>
+    <p align='center'><label>Отчество<input type="text" [(ngModel)] = "userCreation.secondName"></label></p>
+    <p align='center'><label>Название организации или отдела<input type="text" [(ngModel)] = "userCreation.departmentName"></label></p>
+    <p align='center'><label>Майл<input type="text" [(ngModel)] = "userCreation.email"></label></p>
+    <p align='center'><label>Логин<input type="text" [(ngModel)] = "userCreation.username"></label></p>
+    <p align='center'><label>Пароль<input type="password" [(ngModel)] = "userCreation.password"></label></p>
+    <p align='center'><button (click) = "singUp(userCreation)">sing up</button></p>
+</div>

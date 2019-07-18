@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SingUpService} from '../sing-up.service';
+import { UserCreation } from './userCreation';
 
 @Component({
   selector: 'app-sing-up',
@@ -7,7 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SingUpComponent implements OnInit {
 
-  constructor() { }
+  userCreation : UserCreation = {
+    firstName : "",
+    lastName: '',
+    secondName: '',
+    depratmentName: '',
+    email: '',
+    username: '',
+    password: ''
+  };
+
+  singUp():void{
+  	this.singUpService.singUp(this.userCreation);
+    this.userCreation.depratmentName="cuka";
+  	//route to login page
+  }
+
+  constructor(private singUpService: SingUpService) { }
 
   ngOnInit() {
   }
