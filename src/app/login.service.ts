@@ -12,11 +12,9 @@ export class LoginService {
   authorisationServiceURL = "http://localhost:8079/services/authorisation-service/";
   singInURL = "login";
 
-  singIn(userCredentials): string{
+  singIn(userCredentials): Observable<HttpResponse<any>>{
   	let token: string;
-  	this.http.post<any>(this.authorisationServiceURL + this.singInURL,userCredentials, {observe: 'response'})
-  	.subscribe(response => this.tokenService.setToken(response.headers.get(this.tokenService.getTokenHeaderName())));
-  	return this.tokenService.getToken();
+  	return this.http.post<any>(this.authorisationServiceURL + this.singInURL,userCredentials, {observe: 'response'})
   }
 
   constructor(private tokenService: TokenService, private http: HttpClient) { }

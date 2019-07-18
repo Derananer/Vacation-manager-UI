@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserCredentials } from './userCredentials';
-import { LoginService} from '../login.service';
+import { LoginService } from '../login.service';
+import { TokenService } from '../token.service';
 
 
 @Component({
@@ -10,14 +11,24 @@ import { LoginService} from '../login.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { }
+  userCredentials: UserCredentials = {
+    username: "",
+    password: ""
+  };
+
+  
 
   singIn(userCredentials: UserCredentials):void{
-  	//here http request
-  	this.loginService
+  	  //here http request
+  	  this.loginService.singIn(userCredentials).subscribe(response => {
+      this.tokenService.setToken(response.headers.get(this.tokenService.getTokenHeaderName()))
+      //route to main page
+    });
   }
 
   ngOnInit() {
   }
+
+  constructor(private loginService: LoginService, private tokenService: TokenService) { }
 
 }

@@ -20,8 +20,7 @@ export class SingUpComponent implements OnInit {
   };
 
   singUp():void{
-  	this.singUpService.singUp(this.userCreation);
-    this.userCreation.depratmentName="cuka";
+  	this.singUpService.singUp(this.userCreation).subscribe(data => {window.alert("success")});//add error handling
   	//route to login page
   }
 
