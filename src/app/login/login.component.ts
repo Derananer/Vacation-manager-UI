@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
   singIn(userCredentials: UserCredentials):void{
   	  //here http request
   	  this.loginService.singIn(userCredentials).subscribe(response => {
-      this.tokenService.setToken(response.headers.get(this.tokenService.getTokenHeaderName()))
+      this.tokenService.setToken(response.headers.get(this.tokenService.getTokenHeaderName()));
+      this.tokenService.setDepartmentId(response.headers.get(this.tokenService.getDepartmentIdHeaderName()));
       //route to main page
     });
   }

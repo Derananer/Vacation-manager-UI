@@ -22,6 +22,7 @@ export class SingUpComponent implements OnInit {
   singUp():void{
   	this.singUpService.singUp(this.userCreation).subscribe(data => {window.alert("success")});//add error handling
   	//route to login page
+    //add alert aboute successful registration
   }
 
   constructor(private singUpService: SingUpService) { }

@@ -11,15 +11,14 @@ export class EmployeesService {
 
 	//here we need list of emps
 	//(we can create list that would update after ever action)
-  department = "";
   employeeServiceURL = "http://localhost:8079/services/employee-service/";
   employeesURL = "employees";
   employeeURL = "employee";
   addEmployeeURL = "add-employee";
   removeEmployeeURL = "";
 
-  standardHeaders = new HttpHeaders({
-    'department': this.department, 
+  standardHeaders = new HttpHeaders({//review logic with headers
+    'department' : this.tokenService.getDepartmentId(), 
     'Content-Type':  'application/json',
     'Authorization': this.tokenService.getToken()
   });
@@ -35,6 +34,6 @@ export class EmployeesService {
   /*deleteEmployee():Observable<>{
 
   }*/
-
+ 
  constructor(private http: HttpClient, private tokenService: TokenService) { }
 }

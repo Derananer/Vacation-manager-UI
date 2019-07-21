@@ -4,8 +4,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TokenService {
+
+  departmentId:string;
   token:string;
-  tokenHeaderName:string = 'token';
+  departmentIdHeaderName:string = 'department';
+  tokenHeaderName:string = 'Authorization';
 
   getTokenHeaderName():string{
   	return this.tokenHeaderName;
@@ -15,6 +18,15 @@ export class TokenService {
   }
   getToken():string{
   	return this.token;
+  }
+  getDepartmentIdHeaderName():string{
+    return this.departmentIdHeaderName;
+  }
+  setDepartmentId(departmentId:string):void{
+    this.departmentId = departmentId;
+  }
+  getDepartmentId():string{
+    return this.departmentId;
   }
 
   constructor() { }
